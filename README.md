@@ -25,13 +25,21 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+This project is a Streamlit number guessing game where the player tries to find the secret number within a limited number of attempts. The goal of the lab was to investigate broken AI-generated code, debug the problems, and make the game playable again.
+
+The main bugs I found were that pressing Enter did not submit a guess, the higher/lower hints were reversed, the developer debug info showed stale values, and starting a new game did not fully reset the game state. I also found logic issues in the difficulty ranges, score handling, attempt initialization, and secret-number generation for a new game.
+
+I fixed those problems by wrapping the input in a `st.form`, correcting the hint logic, keeping the debug panel at the top with an `st.empty()` placeholder, and resetting all relevant session-state values on a new game. I also moved the shared game logic into `logic_utils.py` and added pytest coverage so the repaired behavior is checked automatically.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Winning game demo](demo.png)
+
+## ✅ Test Results
+
+The repaired logic is covered by pytest tests for guess checking, score updates, input parsing, and difficulty ranges.
+
+![Pytest passing results](tests.png)
 
 ## 🚀 Stretch Features
 
